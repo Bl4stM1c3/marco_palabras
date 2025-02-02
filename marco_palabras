@@ -1,0 +1,26 @@
+#Posible solucion al ejercicio 31 de https://retosdeprogramacion.com/ejercicios/
+#Crea una función que reciba un texto y muestre cada palabra en una línea,
+# * formando un marco rectangular de asteriscos.
+# * - ¿Qué te parece el reto? Se vería así:
+# *   **********
+# *   * ¿Qué   *
+# *   * te     *
+# *   * parece *
+# *   * el     *
+# *   * reto?  *
+# *   **********
+
+#Resolucion mediante recursividad de funciones
+def marco_palabras(texto):
+    
+    def descomponer_texto(texto):
+        return texto.split()
+    
+    def palabra_larga(texto):
+        return max(descomponer_texto(texto), key=len) #Nos quedamos con el tamaño de la palabra más larga para determinar el ancho del marco
+    
+    print("*"+"*"*len(palabra_larga(texto))+"*") #Muestra el borde superior
+    for palabra in descomponer_texto(texto):
+        print("*"+palabra+(" "*(len(palabra_larga(texto))-len(palabra))+"*")) #Escribe las lineas del interior con las palabras del texto
+    print("*"+"*"*len(palabra_larga(texto))+"*") #Muestra el borde inferior
+        
